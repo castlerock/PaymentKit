@@ -40,4 +40,6 @@
 @property id <PKViewDelegate> delegate;
 @property (readonly) PKCard* card;
 
+-(UIImage*)imageForCurrentCreditCard;
+
 @end

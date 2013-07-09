@@ -354,6 +354,38 @@
     [self setPlaceholderViewImage:[UIImage imageNamed:cardTypeName]];
 }
 
+-(UIImage*)imageForCurrentCreditCard
+{
+    PKCardNumber *cardNumber = [PKCardNumber cardNumberWithString:cardNumberField.text];
+    PKCardType cardType      = [cardNumber cardType];
+    NSString* cardTypeName   = @"placeholder";
+    
+    switch (cardType) {
+        case PKCardTypeAmex:
+            cardTypeName = @"amex";
+            break;
+        case PKCardTypeDinersClub:
+            cardTypeName = @"diners";
+            break;
+        case PKCardTypeDiscover:
+            cardTypeName = @"discover";
+            break;
+        case PKCardTypeJCB:
+            cardTypeName = @"jcb";
+            break;
+        case PKCardTypeMasterCard:
+            cardTypeName = @"mastercard";
+            break;
+        case PKCardTypeVisa:
+            cardTypeName = @"visa";
+            break;
+        default:
+            break;
+    }
+    
+    return [UIImage imageNamed:cardTypeName];
+}
+
 // Delegates
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
